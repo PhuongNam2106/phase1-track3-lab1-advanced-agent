@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflexion Agent - Benchmark Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-color: #0d0e10;
+            --panel-bg: #141619;
+            --border-color: #000000;
+            --text-color: #e2e8f0;
+            --text-muted: #8e9cae;
+            --accent-green: #39ff14;
+            --accent-orange: #ff5e00;
+            --accent-red: #ff3333;
+            --panel-shadow: 6px 6px 0px #000000;
+            --btn-shadow: 4px 4px 0px #000000;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Space Grotesk', sans-serif;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Layout */
+        header {
+            margin-bottom: 2rem;
+            border-bottom: 4px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        h1 span {
+            color: var(--accent-orange);
+        }
+
+        .subtitle {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Components */
+        .neo-panel {
+            background-color: var(--panel-bg);
+            border: 3px solid var(--border-color);
+            box-shadow: var(--panel-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .neo-panel-title {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* File Upload */
+        .file-upload-zone {
+            border: 2px dashed #3a3f47;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s, background-color 0.2s;
+            background-color: #1a1c20;
+        }
+
+        .file-upload-zone:hover {
+            border-color: var(--accent-orange);
+            background-color: #202329;
+        }
+
+        .file-upload-zone input {
+            display: none;
+        }
+
+        .file-upload-zone p {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--panel-bg);
+            border: 3px solid var(--border-color);
+            box-shadow: var(--panel-shadow);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .stat-comparison {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 1rem;
+        }
+
+        .stat-value {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .stat-value.react {
+            color: var(--accent-orange);
+        }
+
+        .stat-value.reflexion {
+            color: var(--accent-green);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .stat-delta {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            padding: 2px 6px;
+            background-color: #000;
+            border: 1px solid #333;
+            font-weight: bold;
+        }
+
+        .stat-delta.positive {
+            color: var(--accent-green);
+        }
+
+        .stat-delta.negative {
+            color: var(--accent-red);
+        }
+
+        .stat-delta.neutral {
+            color: var(--text-muted);
+        }
+
+        /* Failure Modes */
+        .chart-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .chart-bar-group {
+            border-bottom: 1px solid #202328;
+            padding-bottom: 0.75rem;
+        }
+
+        .chart-bar-label {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .bar-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bar {
+            height: 12px;
+            background-color: var(--accent-orange);
+            border: 1px solid #000;
+            min-width: 4px;
+        }
+
+        .bar.reflexion {
+            background-color: var(--accent-green);
+        }
+
+        .bar-val {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            min-width: 25px;
+        }
+
+        /* Examples list */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-input {
+            background-color: #1a1c20;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .filter-input:focus {
+            border-color: var(--accent-orange);
+        }
+
+        .filter-select {
+            background-color: #1a1c20;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            border-color: var(--accent-orange);
+        }
+
+        .examples-table-wrapper {
+            overflow-x: auto;
+            border: 2px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #1b1d22;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #202328;
+            vertical-align: middle;
+        }
+
+        tr.clickable {
+            cursor: pointer;
+        }
+
+        tr.clickable:hover {
+            background-color: #1b1d22;
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border: 1px solid #000;
+            text-transform: uppercase;
+        }
+
+        .badge.correct {
+            background-color: rgba(57, 255, 20, 0.15);
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        .badge.incorrect {
+            background-color: rgba(255, 51, 51, 0.15);
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .badge.easy {
+            background-color: #1e293b;
+            color: #94a3b8;
+        }
+
+        .badge.medium {
+            background-color: #78350f;
+            color: #fbbf24;
+        }
+
+        .badge.hard {
+            background-color: #7f1d1d;
+            color: #f87171;
+        }
+
+        .badge.react-agent {
+            background-color: rgba(255, 94, 0, 0.15);
+            color: var(--accent-orange);
+            border-color: var(--accent-orange);
+        }
+
+        .badge.reflexion-agent {
+            background-color: rgba(57, 255, 20, 0.15);
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        /* Detail Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: flex-end;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 700px;
+            background-color: var(--panel-bg);
+            border-left: 4px solid var(--border-color);
+            height: 100%;
+            padding: 2rem;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateX(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .btn-close {
+            background-color: #1a1c20;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            box-shadow: var(--btn-shadow);
+        }
+
+        .btn-close:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        .trace-card {
+            background-color: #0d0e10;
+            border: 2px solid var(--border-color);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .trace-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid #202328;
+            padding-bottom: 0.5rem;
+        }
+
+        .trace-label {
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .trace-body {
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .reflection-block {
+            background-color: rgba(255, 94, 0, 0.08);
+            border-left: 4px solid var(--accent-orange);
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .reflection-block.green {
+            background-color: rgba(57, 255, 20, 0.08);
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .reflection-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        /* Discussion & Metadata Panel */
+        .meta-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .meta-list li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #202328;
+            padding-bottom: 0.25rem;
+        }
+
+        .meta-list span.val {
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
+        }
+
+        .discussion-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            white-space: pre-line;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>Reflexion <span>Agent</span> Evaluation</h1>
+            <p class="subtitle">Bảng trực quan hóa & đối sánh hiệu năng ReAct vs Reflexion</p>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <label class="neo-panel file-upload-zone" style="margin: 0; padding: 0.6rem 1.2rem;">
+                <input type="file" id="fileInput" accept=".json">
+                <p>📂 TẢI FILE REPORT.JSON</p>
+            </label>
+            <button class="btn-close" style="padding: 0.6rem 1.2rem;" onclick="loadDefaultData()">🔄 Mặc Định</button>
+        </div>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-title">Exact Match (EM)</div>
+            <div class="stat-comparison">
+                <div>
+                    <span class="stat-label">ReAct</span>
+                    <span class="stat-value react" id="stat-react-em">-</span>
+                </div>
+                <div>
+                    <span class="stat-label">Reflexion</span>
+                    <span class="stat-value reflexion" id="stat-reflexion-em">-</span>
+                </div>
+            </div>
+            <div style="margin-top: 0.75rem; text-align: right;">
+                <span class="stat-delta" id="delta-em">-</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Số lần thử TB (Attempts)</div>
+            <div class="stat-comparison">
+                <div>
+                    <span class="stat-label">ReAct</span>
+                    <span class="stat-value react" id="stat-react-attempts">-</span>
+                </div>
+                <div>
+                    <span class="stat-label">Reflexion</span>
+                    <span class="stat-value reflexion" id="stat-reflexion-attempts">-</span>
+                </div>
+            </div>
+            <div style="margin-top: 0.75rem; text-align: right;">
+                <span class="stat-delta" id="delta-attempts">-</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Tokens trung bình</div>
+            <div class="stat-comparison">
+                <div>
+                    <span class="stat-label">ReAct</span>
+                    <span class="stat-value react" id="stat-react-tokens">-</span>
+                </div>
+                <div>
+                    <span class="stat-label">Reflexion</span>
+                    <span class="stat-value reflexion" id="stat-reflexion-tokens">-</span>
+                </div>
+            </div>
+            <div style="margin-top: 0.75rem; text-align: right;">
+                <span class="stat-delta" id="delta-tokens">-</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Độ trễ trung bình (ms)</div>
+            <div class="stat-comparison">
+                <div>
+                    <span class="stat-label">ReAct</span>
+                    <span class="stat-value react" id="stat-react-latency">-</span>
+                </div>
+                <div>
+                    <span class="stat-label">Reflexion</span>
+                    <span class="stat-value reflexion" id="stat-reflexion-latency">-</span>
+                </div>
+            </div>
+            <div style="margin-top: 0.75rem; text-align: right;">
+                <span class="stat-delta" id="delta-latency">-</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Chi phí trung bình (USD)</div>
+            <div class="stat-comparison">
+                <div>
+                    <span class="stat-label">ReAct</span>
+                    <span class="stat-value react" id="stat-react-cost">-</span>
+                </div>
+                <div>
+                    <span class="stat-label">Reflexion</span>
+                    <span class="stat-value reflexion" id="stat-reflexion-cost">-</span>
+                </div>
+            </div>
+            <div style="margin-top: 0.75rem; text-align: right;">
+                <span class="stat-delta" id="delta-cost">-</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside>
+            <div class="neo-panel">
+                <div class="neo-panel-title">Thông tin đợt chạy</div>
+                <ul class="meta-list">
+                    <li><span>Dataset:</span> <span class="val" id="meta-dataset">-</span></li>
+                    <li><span>Chế độ:</span> <span class="val" id="meta-mode">-</span></li>
+                    <li><span>Tổng số bản ghi:</span> <span class="val" id="meta-records">-</span></li>
+                    <li><span>Tác nhân:</span> <span class="val" id="meta-agents">-</span></li>
+                </ul>
+            </div>
+
+            <div class="neo-panel">
+                <div class="neo-panel-title">Failure Modes</div>
+                <div class="chart-row" id="failure-chart-container">
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Tải file để hiển thị biểu đồ phân bổ lỗi.</p>
+                </div>
+            </div>
+
+            <div class="neo-panel">
+                <div class="neo-panel-title">Phân tích & Thảo luận</div>
+                <p class="discussion-text" id="discussion-box">-</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="neo-panel" style="margin-bottom: 0;">
+            <div class="neo-panel-title">
+                Danh sách câu hỏi thử nghiệm
+                <span class="badge" style="background: #000; border-color: #333;" id="example-count-badge">0 bản ghi</span>
+            </div>
+
+            <div class="filters">
+                <input type="text" id="searchBar" class="filter-input" placeholder="Tìm kiếm câu hỏi hoặc ID..." style="flex-grow: 1;">
+                <select id="difficultyFilter" class="filter-select">
+                    <option value="all">Mọi độ khó</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <select id="statusFilter" class="filter-select">
+                    <option value="all">Mọi kết quả</option>
+                    <option value="correct">Đúng (Correct)</option>
+                    <option value="incorrect">Sai (Incorrect)</option>
+                </select>
+                <select id="agentFilter" class="filter-select">
+                    <option value="all">Mọi tác nhân</option>
+                    <option value="react">ReAct</option>
+                    <option value="reflexion">Reflexion</option>
+                </select>
+            </div>
+
+            <div class="examples-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>QID</th>
+                            <th>Tác nhân</th>
+                            <th>Độ khó</th>
+                            <th>Câu hỏi</th>
+                            <th>Đáp án Gold</th>
+                            <th>Dự đoán</th>
+                            <th>Số lần thử</th>
+                            <th>Kết quả</th>
+                        </tr>
+                    </thead>
+                    <tbody id="examplesTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; color: var(--text-muted); padding: 2rem;">Chưa có dữ liệu. Hãy tải file report.json.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Trace Slide Drawer -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalQid" style="font-size: 1.5rem; color: var(--accent-orange);">QID: -</h2>
+                    <p id="modalAgent" style="font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; margin-top: 0.25rem;">Tác nhân: -</p>
+                </div>
+                <button class="btn-close" onclick="closeModal()">Đóng ✕</button>
+            </div>
+
+            <div>
+                <h3 style="font-size: 1.1rem; text-transform: uppercase; margin-bottom: 0.5rem;">Câu hỏi:</h3>
+                <p id="modalQuestion" style="background: #1a1c20; border-left: 4px solid var(--accent-orange); padding: 0.75rem 1rem; font-size: 1rem;"></p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <h4 style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase;">Đáp án Gold:</h4>
+                    <p id="modalGold" style="font-family: 'Share Tech Mono', monospace; font-weight: bold; font-size: 1.1rem; color: var(--accent-green);"></p>
+                </div>
+                <div>
+                    <h4 style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase;">Đáp án Dự Đoán:</h4>
+                    <p id="modalPredicted" style="font-family: 'Share Tech Mono', monospace; font-weight: bold; font-size: 1.1rem;"></p>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="font-size: 1.1rem; text-transform: uppercase; margin-bottom: 0.75rem;">Lịch trình thử nghiệm (Traces)</h3>
+                <div id="modalTracesContainer" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Traces populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let reportData = null;
+        let originalRunData = []; // Raw runs mapping
+
+        // Fetch on startup
+        window.addEventListener('DOMContentLoaded', () => {
+            loadDefaultData();
+
+            // Set up search and filter inputs
+            document.getElementById('searchBar').addEventListener('input', renderTable);
+            document.getElementById('difficultyFilter').addEventListener('change', renderTable);
+            document.getElementById('statusFilter').addEventListener('change', renderTable);
+            document.getElementById('agentFilter').addEventListener('change', renderTable);
+
+            // Set up file input
+            document.getElementById('fileInput').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    try {
+                        const parsed = JSON.parse(evt.target.result);
+                        processReport(parsed);
+                    } catch(err) {
+                        alert("Lỗi phân tích cú pháp file JSON: " + err.message);
+                    }
+                };
+                reader.readAsText(file);
+            });
+        });
+
+        function loadDefaultData() {
+            // Try fetching default report.json in outputs/real_run
+            fetch('outputs/real_run/report.json')
+                .then(res => {
+                    if (!res.ok) throw new Error("Could not find outputs/real_run/report.json");
+                    return res.json();
+                })
+                .then(data => {
+                    processReport(data);
+                })
+                .catch(err => {
+                    // Try outputs/sample_run/report.json
+                    fetch('outputs/sample_run/report.json')
+                        .then(res => {
+                            if (!res.ok) throw new Error("Could not find outputs/sample_run/report.json");
+                            return res.json();
+                        })
+                        .then(data => {
+                            processReport(data);
+                        })
+                        .catch(err2 => {
+                            console.log("No default reports loaded. Please upload manual report.json.");
+                        });
+                });
+        }
+
+        function processReport(data) {
+            reportData = data;
+            
+            // Populate meta
+            document.getElementById('meta-dataset').innerText = data.meta.dataset || "-";
+            document.getElementById('meta-mode').innerText = data.meta.mode || "-";
+            document.getElementById('meta-records').innerText = data.meta.num_records || "0";
+            document.getElementById('meta-agents').innerText = (data.meta.agents || []).join(", ") || "-";
+            document.getElementById('discussion-box').innerText = data.discussion || "Chưa có thảo luận.";
+
+            // KPI Cards
+            const react = data.summary.react || {};
+            const reflexion = data.summary.reflexion || {};
+            const delta = data.summary.delta_reflexion_minus_react || {};
+
+            // EM
+            document.getElementById('stat-react-em').innerText = (react.em !== undefined) ? (react.em * 100).toFixed(1) + "%" : "-";
+            document.getElementById('stat-reflexion-em').innerText = (reflexion.em !== undefined) ? (reflexion.em * 100).toFixed(1) + "%" : "-";
+            setDeltaUI(document.getElementById('delta-em'), delta.em_abs, (val) => (val * 100).toFixed(1) + "%", true);
+
+            // Attempts
+            document.getElementById('stat-react-attempts').innerText = react.avg_attempts || "-";
+            document.getElementById('stat-reflexion-attempts').innerText = reflexion.avg_attempts || "-";
+            setDeltaUI(document.getElementById('delta-attempts'), delta.attempts_abs, (val) => val.toFixed(2), false);
+
+            // Tokens
+            document.getElementById('stat-react-tokens').innerText = react.avg_token_estimate || "-";
+            document.getElementById('stat-reflexion-tokens').innerText = reflexion.avg_token_estimate || "-";
+            setDeltaUI(document.getElementById('delta-tokens'), delta.tokens_abs, (val) => Math.round(val), false);
+
+            // Latency
+            document.getElementById('stat-react-latency').innerText = react.avg_latency_ms ? Math.round(react.avg_latency_ms) : "-";
+            document.getElementById('stat-reflexion-latency').innerText = reflexion.avg_latency_ms ? Math.round(reflexion.avg_latency_ms) : "-";
+            setDeltaUI(document.getElementById('delta-latency'), delta.latency_abs, (val) => Math.round(val) + "ms", false);
+
+            // Cost
+            const reactCost = react.avg_cost_usd !== undefined ? react.avg_cost_usd : (react.avg_token_estimate ? (react.avg_token_estimate / 1000000.0) * 0.25 : 0);
+            const reflexionCost = reflexion.avg_cost_usd !== undefined ? reflexion.avg_cost_usd : (reflexion.avg_token_estimate ? (reflexion.avg_token_estimate / 1000000.0) * 0.25 : 0);
+            const deltaCost = delta.cost_abs !== undefined ? delta.cost_abs : (reflexionCost - reactCost);
+            
+            document.getElementById('stat-react-cost').innerText = reactCost ? "$" + reactCost.toFixed(6) : "-";
+            document.getElementById('stat-reflexion-cost').innerText = reflexionCost ? "$" + reflexionCost.toFixed(6) : "-";
+            setDeltaUI(document.getElementById('delta-cost'), deltaCost, (val) => "$" + val.toFixed(6), false);
+
+            // Render failure breakdown charts
+            renderFailureChart(data.failure_modes);
+
+            // Load and match original details if available
+            // Let's check if we can fetch react_runs.jsonl or reflexion_runs.jsonl from same outdir
+            const outdir = data.meta.mode === "mock" ? "outputs/sample_run" : "outputs/real_run";
+            
+            // Try loading detail runs to get full attempt traces
+            Promise.all([
+                fetch(`${outdir}/react_runs.jsonl`).then(res => res.text()).catch(() => ""),
+                fetch(`${outdir}/reflexion_runs.jsonl`).then(res => res.text()).catch(() => "")
+            ]).then(([reactLines, reflexionLines]) => {
+                originalRunData = [];
+                const parseJsonl = (txt) => txt.split("\n").filter(l => l.trim()).map(l => JSON.parse(l));
+                
+                try {
+                    if (reactLines) originalRunData.push(...parseJsonl(reactLines));
+                    if (reflexionLines) originalRunData.push(...parseJsonl(reflexionLines));
+                } catch(e) {
+                    console.log("Could not parse jsonl trace details.", e);
+                }
+
+                renderTable();
+            });
+        }
+
+        function setDeltaUI(elem, val, formatFn, higherIsBetter) {
+            if (val === undefined || isNaN(val)) {
+                elem.innerText = "-";
+                elem.className = "stat-delta neutral";
+                return;
+            }
+            const sign = val > 0 ? "+" : "";
+            elem.innerText = `${sign}${formatFn(val)}`;
+            
+            if (val === 0) {
+                elem.className = "stat-delta neutral";
+            } else if (val > 0) {
+                elem.className = higherIsBetter ? "stat-delta positive" : "stat-delta negative";
+            } else {
+                elem.className = higherIsBetter ? "stat-delta negative" : "stat-delta positive";
+            }
+        }
+
+        function renderFailureChart(modes) {
+            const container = document.getElementById('failure-chart-container');
+            container.innerHTML = "";
+
+            const allFailures = new Set();
+            Object.values(modes).forEach(modeGroup => {
+                Object.keys(modeGroup).forEach(k => {
+                    if (k !== "none") allFailures.add(k);
+                });
+            });
+
+            if (allFailures.size === 0) {
+                container.innerHTML = `<p style="font-size: 0.9rem; color: var(--text-muted);">Không có lỗi sai nào được ghi nhận.</p>`;
+                return;
+            }
+
+            // Find max count for scaling
+            let maxCount = 1;
+            Object.values(modes).forEach(modeGroup => {
+                Object.entries(modeGroup).forEach(([k, count]) => {
+                    if (k !== "none" && count > maxCount) maxCount = count;
+                });
+            });
+
+            allFailures.forEach(failName => {
+                const reactCount = (modes.react && modes.react[failName]) || 0;
+                const reflexionCount = (modes.reflexion && modes.reflexion[failName]) || 0;
+
+                const reactWidth = Math.max(5, (reactCount / maxCount) * 80) + "%";
+                const reflexionWidth = Math.max(5, (reflexionCount / maxCount) * 80) + "%";
+
+                const row = document.createElement('div');
+                row.className = "chart-bar-group";
+                row.innerHTML = `
+                    <div class="chart-bar-label">
+                        <span>⚠️ ${failName}</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-wrapper">
+                            <span class="stat-label" style="width: 55px;">ReAct</span>
+                            <div class="bar" style="width: ${reactWidth};"></div>
+                            <span class="bar-val">${reactCount}</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <span class="stat-label" style="width: 55px;">Reflex</span>
+                            <div class="bar reflexion" style="width: ${reflexionWidth};"></div>
+                            <span class="bar-val">${reflexionCount}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function renderTable() {
+            const body = document.getElementById('examplesTableBody');
+            body.innerHTML = "";
+
+            if (!reportData || !reportData.examples) return;
+
+            const searchQuery = document.getElementById('searchBar').value.toLowerCase().trim();
+            const difficultyFilter = document.getElementById('difficultyFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            const agentFilter = document.getElementById('agentFilter').value;
+
+            // Map and augment examples with original traces if found
+            const rows = reportData.examples.map(ex => {
+                const traceMatch = originalRunData.find(t => t.qid === ex.qid && t.agent_type === ex.agent_type);
+                return {
+                    ...ex,
+                    difficulty: traceMatch ? traceMatch.difficulty : "medium", // Default
+                    question: traceMatch ? traceMatch.question : "",
+                    traces: traceMatch ? traceMatch.traces : []
+                };
+            });
+
+            const filtered = rows.filter(r => {
+                // Search match
+                const matchSearch = r.qid.toLowerCase().includes(searchQuery) ||
+                                    r.question.toLowerCase().includes(searchQuery) ||
+                                    r.gold_answer.toLowerCase().includes(searchQuery) ||
+                                    r.predicted_answer.toLowerCase().includes(searchQuery);
+                
+                // Difficulty
+                const matchDiff = difficultyFilter === "all" || r.difficulty === difficultyFilter;
+                
+                // Status
+                const matchStatus = statusFilter === "all" || 
+                                    (statusFilter === "correct" && r.is_correct) ||
+                                    (statusFilter === "incorrect" && !r.is_correct);
+                
+                // Agent
+                const matchAgent = agentFilter === "all" || r.agent_type === agentFilter;
+
+                return matchSearch && matchDiff && matchStatus && matchAgent;
+            });
+
+            document.getElementById('example-count-badge').innerText = `${filtered.length} bản ghi`;
+
+            if (filtered.length === 0) {
+                body.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted); padding: 2rem;">Không tìm thấy câu hỏi nào thỏa mãn bộ lọc.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.className = "clickable";
+                tr.onclick = () => openModal(r);
+                
+                const correctBadge = r.is_correct ? 
+                    `<span class="badge correct">Đúng</span>` : 
+                    `<span class="badge incorrect">${r.failure_mode}</span>`;
+                
+                const agentBadge = r.agent_type === "react" ? 
+                    `<span class="badge react-agent">ReAct</span>` : 
+                    `<span class="badge reflexion-agent">Reflexion</span>`;
+
+                const questionPreview = r.question ? 
+                    (r.question.length > 50 ? r.question.substring(0, 50) + "..." : r.question) : 
+                    "Double-click to load question text";
+
+                tr.innerHTML = `
+                    <td style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">${r.qid}</td>
+                    <td>${agentBadge}</td>
+                    <td><span class="badge ${r.difficulty}">${r.difficulty}</span></td>
+                    <td title="${r.question || ''}">${questionPreview}</td>
+                    <td style="font-family: 'Share Tech Mono', monospace;">${r.gold_answer}</td>
+                    <td style="font-family: 'Share Tech Mono', monospace;">${r.predicted_answer}</td>
+                    <td style="font-family: 'Share Tech Mono', monospace; text-align: center;">${r.attempts}</td>
+                    <td>${correctBadge}</td>
+                `;
+                body.appendChild(tr);
+            });
+        }
+
+        // Modal actions
+        function openModal(row) {
+            document.getElementById('modalQid').innerText = `QID: ${row.qid}`;
+            document.getElementById('modalAgent').innerText = `Tác nhân: ${row.agent_type.toUpperCase()}`;
+            document.getElementById('modalQuestion').innerText = row.question || "(Không có nội dung câu hỏi trong file report.json, vui lòng xuất kèm file react_runs.jsonl / reflexion_runs.jsonl)";
+            document.getElementById('modalGold').innerText = row.gold_answer;
+            document.getElementById('modalPredicted').innerText = row.predicted_answer;
+
+            const tracesContainer = document.getElementById('modalTracesContainer');
+            tracesContainer.innerHTML = "";
+
+            if (!row.traces || row.traces.length === 0) {
+                tracesContainer.innerHTML = `<p style="font-style: italic; color: var(--text-muted); font-size: 0.9rem;">Không tải được thông tin trace chi tiết. Đảm bảo file react_runs.jsonl và reflexion_runs.jsonl nằm cùng thư mục report.json.</p>`;
+            } else {
+                row.traces.forEach(t => {
+                    const traceCard = document.createElement('div');
+                    traceCard.className = "trace-card";
+                    
+                    const scoreBadge = t.score === 1 ? 
+                        `<span class="badge correct">Đúng (Score: 1)</span>` : 
+                        `<span class="badge incorrect">Sai (Score: 0)</span>`;
+
+                    let reflectionHtml = "";
+                    if (t.reflection) {
+                        reflectionHtml = `
+                            <div class="reflection-block">
+                                <div class="reflection-title">💡 Phản chiếu / Rút kinh nghiệm (Reflector)</div>
+                                <p><strong>Lý do lỗi:</strong> ${t.reflection.failure_reason}</p>
+                                <p><strong>Bài học:</strong> ${t.reflection.lesson}</p>
+                                <p style="color: var(--accent-orange);"><strong>Chiến thuật lần sau:</strong> ${t.reflection.next_strategy}</p>
+                            </div>
+                        `;
+                    } else if (row.agent_type === "reflexion" && t.score === 0) {
+                        reflectionHtml = `
+                            <div class="reflection-block">
+                                <div class="reflection-title">💡 Phản chiếu / Rút kinh nghiệm</div>
+                                <p style="font-style: italic;">Không có thông tin reflection được lưu cho lần thử này.</p>
+                            </div>
+                        `;
+                    }
+
+                    traceCard.innerHTML = `
+                        <div class="trace-header">
+                            <span class="trace-label">Lần thử #${t.attempt_id}</span>
+                            ${scoreBadge}
+                        </div>
+                        <div class="trace-body"><strong>Câu trả lời:</strong> ${t.answer}</div>
+                        <div class="trace-body" style="color: var(--text-muted); font-size: 0.85rem;"><strong>Giải thích đánh giá:</strong> ${t.reason}</div>
+                        <div class="trace-body" style="font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            ⚙️ Tokens: ${t.token_estimate} | ⏳ Latency: ${t.latency_ms} ms
+                        </div>
+                        ${reflectionHtml}
+                    `;
+                    tracesContainer.appendChild(traceCard);
+                });
+            }
+
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

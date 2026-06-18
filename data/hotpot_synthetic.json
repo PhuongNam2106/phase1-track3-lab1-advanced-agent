@@ -1,0 +1,802 @@
+[
+  {
+    "qid": "hp_synth_1",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 1 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 1",
+        "text": "Ada Lovelace clone 1 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_2",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 2 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 2",
+        "text": "Ada Lovelace clone 2 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_3",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 3 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 3",
+        "text": "Ada Lovelace clone 3 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_4",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 4 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 4",
+        "text": "Ada Lovelace clone 4 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_5",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 5 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 5",
+        "text": "Ada Lovelace clone 5 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_6",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 6 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 6",
+        "text": "Ada Lovelace clone 6 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_7",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 7 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 7",
+        "text": "Ada Lovelace clone 7 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_8",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 8 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 8",
+        "text": "Ada Lovelace clone 8 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_9",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 9 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 9",
+        "text": "Ada Lovelace clone 9 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_10",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 10 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 10",
+        "text": "Ada Lovelace clone 10 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_11",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 11 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 11",
+        "text": "Ada Lovelace clone 11 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_12",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 12 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 12",
+        "text": "Ada Lovelace clone 12 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_13",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 13 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 13",
+        "text": "Ada Lovelace clone 13 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_14",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 14 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 14",
+        "text": "Ada Lovelace clone 14 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_15",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 15 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 15",
+        "text": "Ada Lovelace clone 15 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_16",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 16 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 16",
+        "text": "Ada Lovelace clone 16 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_17",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 17 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 17",
+        "text": "Ada Lovelace clone 17 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_18",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 18 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 18",
+        "text": "Ada Lovelace clone 18 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_19",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 19 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 19",
+        "text": "Ada Lovelace clone 19 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_20",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 20 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 20",
+        "text": "Ada Lovelace clone 20 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_21",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 21 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 21",
+        "text": "Ada Lovelace clone 21 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_22",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 22 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 22",
+        "text": "Ada Lovelace clone 22 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_23",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 23 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 23",
+        "text": "Ada Lovelace clone 23 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_24",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 24 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 24",
+        "text": "Ada Lovelace clone 24 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_25",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 25 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 25",
+        "text": "Ada Lovelace clone 25 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_26",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 26 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 26",
+        "text": "Ada Lovelace clone 26 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_27",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 27 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 27",
+        "text": "Ada Lovelace clone 27 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_28",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 28 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 28",
+        "text": "Ada Lovelace clone 28 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_29",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 29 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 29",
+        "text": "Ada Lovelace clone 29 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_30",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 30 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 30",
+        "text": "Ada Lovelace clone 30 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_31",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 31 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 31",
+        "text": "Ada Lovelace clone 31 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_32",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 32 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 32",
+        "text": "Ada Lovelace clone 32 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_33",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 33 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 33",
+        "text": "Ada Lovelace clone 33 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_34",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 34 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 34",
+        "text": "Ada Lovelace clone 34 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_35",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 35 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 35",
+        "text": "Ada Lovelace clone 35 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_36",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 36 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 36",
+        "text": "Ada Lovelace clone 36 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_37",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 37 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 37",
+        "text": "Ada Lovelace clone 37 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_38",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 38 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 38",
+        "text": "Ada Lovelace clone 38 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_39",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 39 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 39",
+        "text": "Ada Lovelace clone 39 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_40",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 40 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 40",
+        "text": "Ada Lovelace clone 40 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_41",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 41 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 41",
+        "text": "Ada Lovelace clone 41 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_42",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 42 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 42",
+        "text": "Ada Lovelace clone 42 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_43",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 43 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 43",
+        "text": "Ada Lovelace clone 43 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_44",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 44 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 44",
+        "text": "Ada Lovelace clone 44 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_45",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 45 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 45",
+        "text": "Ada Lovelace clone 45 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_46",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 46 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 46",
+        "text": "Ada Lovelace clone 46 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_47",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 47 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 47",
+        "text": "Ada Lovelace clone 47 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_48",
+    "difficulty": "easy",
+    "question": "What river flows through the city where Ada Lovelace clone 48 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 48",
+        "text": "Ada Lovelace clone 48 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_49",
+    "difficulty": "medium",
+    "question": "What river flows through the city where Ada Lovelace clone 49 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 49",
+        "text": "Ada Lovelace clone 49 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  },
+  {
+    "qid": "hp_synth_50",
+    "difficulty": "hard",
+    "question": "What river flows through the city where Ada Lovelace clone 50 was born?",
+    "gold_answer": "River Thames",
+    "context": [
+      {
+        "title": "Ada Lovelace clone 50",
+        "text": "Ada Lovelace clone 50 was born in London, England."
+      },
+      {
+        "title": "London",
+        "text": "London is crossed by the River Thames."
+      }
+    ]
+  }
+]
